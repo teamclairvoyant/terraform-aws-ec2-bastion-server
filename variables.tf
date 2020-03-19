@@ -40,7 +40,7 @@ variable "zone_id" {
 variable "instance_type" {
   type        = "string"
   default     = "t2.micro"
-  description = "Elastic cache instance type"
+  description = "Bastion server instance type"
 }
 
 variable "ami" {
