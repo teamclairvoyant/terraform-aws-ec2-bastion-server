@@ -89,7 +89,7 @@ data "template_file" "user_data" {
 }
 
 resource "aws_instance" "default" {
-  ami           = "${var.ami}"
+  ami           = "${var.ami["${var.region}"]}"
   instance_type = "${var.instance_type}"
 
   user_data = "${data.template_file.user_data.rendered}"

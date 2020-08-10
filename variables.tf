@@ -44,8 +44,14 @@ variable "instance_type" {
 }
 
 variable "ami" {
-  type        = "string"
-  default     = "ami-efd0428f"
+  type        = map
+  default     = {
+    us-east-1 = "ami-0a887e401f7654935"
+    us-east-2 = "ami-0e38b48473ea57778"
+    us-west-1 = "ami-01c94064639c71719"
+    us-west-2 = "ami-0e8c04af2729ff1bb"
+  }
+  #description = "Amazon Linux 2 AMI (HVM), SSD Volume Type"
   description = "AMI to use"
 }
 
