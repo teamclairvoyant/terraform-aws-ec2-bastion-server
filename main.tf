@@ -43,7 +43,7 @@ resource "aws_security_group" "default" {
   count       = var.enabled ? 1 : 0
   name        = module.label.id
   vpc_id      = var.vpc_id
-  description = "Bastion host security group"
+  description = "Bastion security group (only SSH inbound access is allowed)"
 
   tags = module.label.tags
 
