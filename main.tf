@@ -84,9 +84,24 @@ data "template_file" "user_data" {
   }
 }
 
+data "aws_ami" "amazon-linux-2" {
+  most_recent = true
+  owners      = ["amazon"]
+
+  filter {
+    name   = "name"
+    values = ["amzn2-ami-hvm-*-ebs"]
+  }
+  filter {
+    name   = "architecture"
+    values = ["x86_64"]
+  }
+}
+
 resource "aws_instance" "default" {
   count         = var.enabled ? 1 : 0
-  ami           = var.ami
+#  ami           = var.ami[var.region]
+  ami           = data.aws_ami.amazon-linux-2.id
   instance_type = var.instance_type
 
   user_data = data.template_file.user_data.rendered
